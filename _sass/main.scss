@@ -1,0 +1,67 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base{
+  :not(pre) > code, :not(pre) > kbd, :not(pre) > samp {
+    content: ''
+  }
+  :not(pre)::before > code, :not(pre) > kbd, :not(pre) > samp {
+    @apply text-theme-color px-1 py-0 text-sm;
+    content: ''
+  }
+  .sidebar-nav .nav-parent > .parent-icon {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.1%22%20points%3D%2210%201%204%207%2010%2013%22%20%2F%3E%0A%3C%2Fsvg%3E");
+    background-position: 50% 50%;
+  }
+  .sidebar-nav .nav-parent > .parent-icon.block {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.1%22%20points%3D%221%204%207%2010%2013%204%22%20%2F%3E%0A%3C%2Fsvg%3E");
+  }
+  :target::before {
+    @apply transition-all duration-1000 block pointer-events-none;
+    content: "";
+    margin-top: -135px;
+    height: 135px;
+  }
+  .boxes-svg svg{
+    @apply stroke-theme-color w-16 h-16;
+  }
+}
+
+/* Charts */
+#chart{
+  max-width: 90%;
+}
+.fill-blue {
+  fill: #3688ce;
+}
+.fill-blue:hover {
+  fill: #549ad5;
+}
+.fill-purple {
+  fill: #8a64c7;
+}
+.fill-purple:hover {
+  fill: #ae93d8;
+}
+.fill-green {
+  fill: #64cd84;
+}
+.fill-green:hover {
+  fill: #90dba7;
+}
+.fill-pink {
+  fill: #e27ec2;
+}
+.fill-pink:hover {
+  fill: #f1c3e2;
+}
+.fill-grey {
+  fill: #353f47;
+}
+.fill-grey:hover {
+  fill: #5d6f7d;
+}
+.stroke-black {
+  stroke: black;
+}

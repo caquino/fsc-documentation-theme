@@ -1,0 +1,36 @@
+<div class="fixed inset-0 top-0 bottom-0 right-0 z-50 flex transition-transform duration-300 ease-in-out delay-100 -translate-x-full" data-mobile-nav>
+  <div class="relative flex flex-col flex-1 w-full max-w-xs bg-white focus:outline-none">
+    <div class="absolute top-0 right-0 pt-2 -mr-12">
+      <button type="button" class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" data-mobile-nav-close>
+        <span class="sr-only">Close sidebar</span>
+        <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex-1 h-0 pb-4 overflow-y-auto">
+      <div class="flex items-center flex-shrink-0 px-4 py-5 bg-theme-header-bg">
+        {% if site.logo.size > 0 %}
+          <img class="w-auto h-8 {% if site.logo_invert %}brightness-0 invert {% endif %}" src={{ site.logo }} alt="Back to {{ site.title }} homepage">
+          {% if site.logo_message.size > 0 %}
+            <div class="text-sm text-white">{{ site.logo_message }}</div>
+          {% endif %}
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </div>
+      <nav aria-label="Sidebar" class="mt-5">
+        <div class="pr-3 space-y-2 sidebar-docs">
+          {% if site.internal %}
+          {% assign menu = site.data.menus_internal.main %} {% include navbar-side.html %}
+          {% else %}
+            {% assign menu = site.data.menus.main %} {% include navbar-side.html %}
+          {% endif %}
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="flex-shrink-0 w-14" aria-hidden="true">
+  </div>
+</div>
+<div class="fixed top-0 bottom-0 right-0 z-40 flex w-full h-full transition-transform duration-300 ease-in-out -translate-x-full bg-gray-600 opacity-75" data-mobile-nav-overlay></div>

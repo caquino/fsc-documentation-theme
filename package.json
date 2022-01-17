@@ -1,0 +1,27 @@
+{
+  "name": "jekyll-with-tailwind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "jekyll:dev": "bundle exec jekyll serve --profile --watch --trace --livereload",
+    "jekyll:build": "JEKYLL_ENV=production bundle exec jekyll build",
+    "css:dev": "npx tailwindcss -i _sass/main.scss -o _site/assets/css/main.css",
+    "css:build": "NODE_ENV=production npx tailwindcss -i _sass/main.scss -o _site/assets/css/main.css",
+    "dev": "npm run jekyll:dev",
+    "build": "npm run jekyll:build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/line-clamp": "^0.3.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "autoprefixer": "^10.4.0",
+    "concurrently": "^6.5.1",
+    "tailwindcss": "^3.0.7",
+    "tailwindcss-debug-screens": "^2.2.1"
+  }
+}

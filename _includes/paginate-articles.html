@@ -1,0 +1,24 @@
+<div class="grid grid-cols-2 gap-10 pt-4 mt-4">
+  <div {% if page.previous_title and page.previous_url %}class="pt-4 border-t border-gray-500 border-solid"{% endif %}>
+    {% if page.previous_title and page.previous_url %}
+    <h5>{{page.previous_title}}</h5>
+    <div>
+      <a href="{{page.previous_url}}"
+        >&larr; {{ site.data.translation[site.lang].previous | default:
+        "Previous" }}</a
+      >
+    </div>
+    {% endif %}
+  </div>
+  <div {% if page.next_title and page.next_url %}class="pt-4 border-t border-gray-500 border-solid"{% endif %}>
+    {% if page.next_title and page.next_url %}
+    <h5 class="text-right">{{page.next_title}}</h5>
+    <div class="text-right">
+      <a href="{{page.next_url}}"
+        >{{ site.data.translation[site.lang].next | default: "Next" }}
+        &rarr;</a
+      >
+    </div>
+    {% endif %}
+  </div>
+</div>

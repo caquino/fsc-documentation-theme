@@ -1,0 +1,77 @@
+<div class="sticky top-0 z-10 w-full">
+  <!-- HEADER NAVBAR -->
+  <div class="flex items-center justify-between px-4 py-4 sm:px-6 md:justify-start md:space-x-10 bg-theme-header-bg">
+    <!-- SITE LOGO -->
+    <div class="relative">
+      <a href="/" class="flex" title="Back to {{ site.title }} homepage">
+        {% if site.logo.size > 0 %}
+          <img class="w-auto h-auto max-h-10 {% if site.logo_invert %}brightness-0 invert {% endif %} {% if site.logo_message.size > 0 %}mt-2{% endif %}" src={{ site.logo }} alt="Back to {{ site.title }} homepage">
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </a>
+      {% if site.logo_message.size > 0 %}
+        <div class="text-sm text-theme-header-logo-message">{{ site.logo_message }}</div>
+      {% endif %}
+    </div>
+    <!-- SITE LOGO -->
+    <!-- SEARCH -->
+    <!-- SITE HORIZONTAL NAVBAR -->
+    <div class="hidden md:flex-1 md:flex md:items-center md:justify-between">
+      <nav class="flex">
+        {% for link in site.data.menus_header.left %}
+          {% if link.url contains 'http' %}
+              {% assign domain = '' %}
+          {% else %}
+              {% assign domain = '' | relative_url %}
+          {% endif %}
+          {% if link.url == page.url %}
+              {% assign current = ' class="px-6 -my-10 transition-all duration-500 py-7 lg:p-8 text-theme-header-nav-link bg-theme-header-nav-link-sel hover:bg-theme-header-nav-link-sel"' %}
+          {% else %}
+              {% assign current = ' class="px-6 -my-10 transition-all duration-500 py-7 lg:p-8 text-theme-header-nav-link hover:bg-theme-header-nav-link-sel"' %}
+          {% endif %}
+          {% if link.title %}
+            {% if link.url %}
+                <a {{ current }} href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank" {% endif %} title="{{ link.title }}">{{ link.title }}</a></li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </nav>
+    </div>
+    <!-- SITE HORIZONTAL NAVBAR -->      
+    <div class="flex items-center md:ml-12">
+      {% if site.site_search %}
+      <!-- SEARCH -->
+      <div class="w-full max-w-xs mx-auto">
+        <label for="desktop-search" class="sr-only">Search</label>
+        <div class="relative text-white focus-within:text-gray-600">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <!-- Heroicon name: solid/search -->
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <input id="desktop-search" class="block w-full py-2 pl-10 pr-3 text-xs leading-5 text-gray-900 placeholder-white transition-all duration-500 bg-white border border-transparent rounded-md bg-opacity-20 focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Search" type="search" name="search">
+        </div>
+      </div>
+      <!-- SEARCH -->
+      {% endif %}
+      {% if site.header_support_button.text.size > 0 %}
+      <!-- HEADER BUTTON -->
+      <a href="{{ site.header_support_button.url }}" class="hidden md:block items-center justify-center px-3 py-1.5 ml-8 text-base font-medium transition-all duration-1000 bg-white border border-transparent shadow-sm rounded-2xl text-theme-color hover:border-theme-header-nav-link-sel hover:bg-slate-200 hover:text-blue-900">
+        {{ site.header_support_button.text }}
+      </a>
+      <!-- HEADER BUTTON -->
+      {% endif %}
+      <div class="lg:hidden" data-burger-menu>
+        <button type="button" class="inline-flex items-center justify-center w-12 h-12 -mr-3 text-white rounded-md hover:text-theme-header-nav-link-sel" @click="open = true">
+          <span class="sr-only">Open sidebar</span>
+          <svg class="w-6 h-6" x-description="Heroicon name: outline/menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- /HEADER NAVBAR -->
+</div>

@@ -1,0 +1,23 @@
+main:
+  - url: /start/
+    title: Getting Started
+    identifier: start
+    children:
+      - url: /start/using-a-repo/
+        title: Using a Repo
+        identifier: using-a-repo
+      - url: /start/contribute/
+        title: Making a Contribution
+        identifier: contribute
+      - url: /start/setup-ci/
+        title: Setup CI on GitHub
+        identifier: setup-ci
+      - url: /start/create-repo/
+        title: Creating a Repository
+        identifier: create-repo
+      - url: /start/maintainer/
+        title: Maintaining a Repository
+        identifier: maintainer
+  - url: /community/
+    title: Community
+    identifier: community

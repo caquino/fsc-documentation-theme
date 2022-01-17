@@ -1,0 +1,15 @@
+<nav role="navigation" aria-label="breadcrumbs" class="hidden pb-3 md:-ml-7 sm:block">
+  <ul class="p-0 m-0">
+    {% if site.breadcrumbs.home_title && site.breadcrumbs.home_url %}
+    <li class="inline-block text-[0.6rem] md:text-xs lg:text-sm"><a href="{{ site.breadcrumbs.home_url }}" class="text-gray-500">{{ site.breadcrumbs.home_title }}</a></li>
+    {% endif %}
+    {% if site.breadcrumbs.separator.size > 0 %}
+    {% assign separator = site.breadcrumbs.separator %}
+    {% else %}
+    {% assign separator = '>' %}
+    {% endif %}
+    {% for item in page.breadcrumbs %}
+    <li class="inline-block -m-0.5 text-[0.6rem] md:text-xs lg:text-sm text-gray-600"> {{separator}} <a href="{{ site.breadcrumbs.home_url }}/{{item}}" class="text-gray-500">{{item}}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
