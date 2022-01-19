@@ -26,9 +26,9 @@
               {% assign domain = '' | relative_url %}
           {% endif %}
           {% if link.url == page.url %}
-              {% assign current = ' class="px-6 -my-10 transition-all duration-500 py-7 lg:p-8 text-theme-header-nav-link bg-theme-header-nav-link-sel hover:bg-theme-header-nav-link-sel"' %}
+              {% assign current = ' class="px-6 -my-10 transition-all duration-500 py-7 lg:p-8 text-theme-header-nav-link bg-theme-header-nav-link-bg hover:bg-theme-header-nav-link-bg-sel hover:theme-header-nav-link-sel"' %}
           {% else %}
-              {% assign current = ' class="px-6 -my-10 transition-all duration-500 py-7 lg:p-8 text-theme-header-nav-link hover:bg-theme-header-nav-link-sel"' %}
+              {% assign current = ' class="px-6 -my-10 transition-all duration-500 py-7 lg:p-8 text-theme-header-nav-link-sel hover:bg-theme-header-nav-link-bg-sel"' %}
           {% endif %}
           {% if link.title %}
             {% if link.url %}
