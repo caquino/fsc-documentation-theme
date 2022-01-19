@@ -58,13 +58,13 @@
       {% endif %}
       {% if site.header_support_button.text.size > 0 %}
       <!-- HEADER BUTTON -->
-      <a href="{{ site.header_support_button.url }}" class="hidden md:block items-center justify-center px-3 py-1.5 ml-8 text-base font-medium transition-all duration-1000 bg-white border border-transparent shadow-sm rounded-2xl text-theme-color hover:border-theme-header-nav-link-sel hover:bg-slate-200 hover:text-blue-900">
+      <a href="{{ site.header_support_button.url }}" class="hidden md:block items-center justify-center px-3 py-1.5 ml-8 text-base font-medium transition-all duration-1000 bg-theme-header-support-button border border-transparent shadow-sm rounded-2xl text-theme-header-support-button hover:border-theme-header-support-button-bg hover:bg-theme-header-support-button-bg-hover hover:text-theme-header-support-button-hover">
         {{ site.header_support_button.text }}
       </a>
       <!-- HEADER BUTTON -->
       {% endif %}
       <div class="lg:hidden" data-burger-menu>
-        <button type="button" class="inline-flex items-center justify-center w-12 h-12 -mr-3 text-white rounded-md hover:text-theme-header-nav-link-sel" @click="open = true">
+        <button type="button" class="inline-flex items-center justify-center w-12 h-12 -mr-3 rounded-md text-theme-mobile-menu-icon hover:text-theme-mobile-menu-icon-hover">
           <span class="sr-only">Open sidebar</span>
           <svg class="w-6 h-6" x-description="Heroicon name: outline/menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>

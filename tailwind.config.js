@@ -15,9 +15,10 @@ module.exports = {
         'theme-header-nav-link-sel': '#3CA8EF',
         'theme-header-logo-message': '#FFFFFF',
         'theme-header-support-button': '#1188D6',
+        'theme-header-support-button-hover': '#1188D6',
         'theme-header-support-button-bg': '#ffffff',
         'theme-header-support-button-bg-hover': '#3CA8EF',
-        'theme-mobile-menu-icon': '#1188D6',
+        'theme-mobile-menu-icon': '#FFFFFF',
         'theme-mobile-menu-icon-hover': '#3CA8EF',
       },
       typography: (theme) => ({
