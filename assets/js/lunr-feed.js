@@ -1,37 +1,38 @@
 ---
+layout: null
 ---
 {% if site.site_search %}
-{% assign counter = 0 %}
-var documents = [{% for page in site.pages %}{% if page.url contains '.xml' or page.url contains 'assets' or page.url contains '404' %}{% else %}{
-    "id": {{ counter }},
-    "url": "{{ site.url }}{{ page.url }}",
-    "title": "{{ page.title }}",
-    "body": "{{ page.content | markdownify | replace: '.', '. ' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
-    }, {% endif %}{% endfor %}{% for page in site.without-plugin %}{
-    "id": {{ counter }},
-    "url": "{{ site.url }}{{ page.url }}",
-    "title": "{{ page.title }}",
-    "body": "{{ page.content | markdownify | replace: '.', '. ' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
-    }, {% endfor %}{% for page in site.posts %}{
-    "id": {{ counter }},
-    "url": "{{ site.url }}{{ page.url }}",
-    "title": "{{ page.title }}",
-    "body": "{{ page.date | date: "%Y/%m/%d" }} - {{ page.content | markdownify | replace: '.', '. ' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
-    }{% if forloop.last %}{% else %}, {% endif %}{% endfor %}];
+{% assign pages = site.pages | where_exp: "item", "item.title" %}
+{% assign posts = site.posts | where_exp: "item", "item.title" %}
+{% assign allPages = pages | concat: posts %}
+
+{% capture lunrData %}
+var docIndex = [
+{% for page in allPages %}
+{
+"id": {{ forloop.index0 }},
+"url": "{{ site.url }}{{ page.url }}",
+"title": {{ page.title | jsonify }},
+"body": {{ page.content | strip_html | replace: '\n', ' ' | replace: '#', ' ' | split: ' ' | join: ' ' | jsonify }}
+}
+{% unless forloop.last %}, {% endunless %}
+{% endfor %}
+];
+{% endcapture %}
+
+{{ lunrData | strip_newlines }}
 
 var idx = lunr(function () {
     this.ref('id')
     this.field('title')
     this.field('body')
 
-    documents.forEach(function (doc) {
+    docIndex.forEach(function (doc) {
         this.add(doc)
     }, this)
 });
 
 function initSearch() {
-    console.log("init search...")
-
     // add keyup to search-input
     const desktopSearch = document.getElementById('search-input');
     const resultSection = document.getElementById('results-container');
@@ -82,8 +83,8 @@ function initSearch() {
             var ref = results[item].ref;
             
             var link = document.createElement('a');
-            link.href = documents[ref].url;
-            link.innerHTML = documents[ref].title;
+            link.href = docIndex[ref].url;
+            link.innerHTML = docIndex[ref].title;
 
             var li = document.createElement('li');
             li.classList.add('p-px');

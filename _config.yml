@@ -17,7 +17,7 @@ breadcrumbs:
 header_support_button:
   text: 'support' # Text to display in the support button
   url: '/support/' # URL to redirect to when the support button is clicked
-site_search: false # Set to false to disable the site search
+site_search: true # Set to false to disable the site search
 
 
 # Jekyll plugins
