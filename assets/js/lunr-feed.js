@@ -52,7 +52,6 @@ function initSearch() {
             resultCount.classList.remove('ml-0');
             resultCount.classList.add('ml-[-46%]');
             resultSection.classList.add('hidden');
-            console.log('document click')
         }
     });
 
@@ -62,7 +61,6 @@ function initSearch() {
             resultCount.classList.remove('ml-0');
             resultCount.classList.add('ml-[-46%]');
             resultSection.classList.add('hidden');
-            console.log('document focus')
         }
     });
 
